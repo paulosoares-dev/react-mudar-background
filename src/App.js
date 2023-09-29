@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { useState } from "react";
+
+export default function App() {
+  const [novoEstilo, setNovoEstilo] = useState("bg-vermelho");
+
+  const alterarCor = () => {
+    if(novoEstilo === "bg-vermelho") {
+      setNovoEstilo("bg-azul");
+    } else {
+      setNovoEstilo("bg-vermelho");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="display">
+      <div className="container">
+        <h1>Alterar cor de fundo:</h1>
+        <div className={novoEstilo}></div>
+        <p>Clique no botão abaixo para alterar a cor da caixa.</p>
+        <button onClick={alterarCor}>Mudar Cor</button>
+      </div>
     </div>
   );
 }
-
-export default App;
