@@ -3,23 +3,24 @@ import "./App.css";
 import { useState } from "react";
 
 export default function App() {
-  const [novoEstilo, setNovoEstilo] = useState("bg-vermelho");
+  const corDeFundoVermelho = "bg-vermelho";
+  const corDeFundoAzul = "bg-azul";
+
+  const [estiloAtualizado, setEstiloAtualizado] = useState(true);
 
   const alterarCor = () => {
-    if(novoEstilo === "bg-vermelho") {
-      setNovoEstilo("bg-azul");
-    } else {
-      setNovoEstilo("bg-vermelho");
-    }
+    setEstiloAtualizado(!estiloAtualizado);
   };
 
   return (
     <div className="display">
       <div className="container">
-        <h1>Alterar cor de fundo:</h1>
-        <div className={novoEstilo}></div>
-        <p>Clique no botão abaixo para alterar a cor da caixa.</p>
-        <button onClick={alterarCor}>Mudar Cor</button>
+        <h2>Altere o estilo do elemento</h2>
+        <div
+          className={estiloAtualizado ? corDeFundoVermelho : corDeFundoAzul}
+        ></div>
+        <p>Clique no botão abaixo para alterar a cor do elemento.</p>
+        <button onClick={alterarCor}>Clique aqui</button>
       </div>
     </div>
   );
